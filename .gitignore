@@ -1,0 +1,8 @@
+# macOS
+.DS_Store
+
+# NetBeans
+nbproject/
+build/
+dist/
+build.xml
