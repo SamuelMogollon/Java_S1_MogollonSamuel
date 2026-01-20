@@ -54,4 +54,11 @@ public abstract class Persona {
     }
 
     public abstract void presentarse();
+
+    public void saludar() {
+        System.out.println("**********************************************************");
+        System.out.println("¡Hola! Soy " + this.nombre + " " + this.apellido);
+        System.out.println("Estoy registrado en: FUNDACIÓN AYUDAS COMUNITARIAS CAMPUS");
+        System.out.println("**********************************************************");
+    }
 }

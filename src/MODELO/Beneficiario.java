@@ -16,10 +16,10 @@ public class Beneficiario extends Persona {
     }
 
     public int getAyudas() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return this.ayudasMes;
     }
 
-    public void setAyudas(int i) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public void setAyudas(int ayudasMes) {
+        this.ayudasMes = ayudasMes;
     }
 }

@@ -21,19 +21,19 @@ public class menuVista {
 
         do {
             System.out.println("""
-            ******************************
-             FUNDACION AYUDAS COMUNITARIAS
-            ******************************
-             Elige una opcion:
-             1. Registrar Persona.
-             2. Ver Personas.
-             3. Ayudar beneficiario.
-             4. Buscar persona.
-             5. Eliminar persona.
-             6. Presentarse.              
-             0. Salir.
-            ******************************
-            """);
+                *****************************************
+                * FUNDACION AYUDAS COMUNITARIAS  CAMPUS * 
+                *****************************************
+                * [1] Registrar Persona.                *
+                * [2] Ver Personas.                     *
+                * [3] Ayudar beneficiario.              *
+                * [4] Buscar persona.                   *
+                * [5] Eliminar persona.                 *
+                * [6] Presentarse.                      *
+                * [0] Salir.                            *
+                *****************************************
+                """);
+            System.out.print("➤ Selecciona una opción: ");
 
             opcion = sc.nextInt();
 
@@ -42,44 +42,50 @@ public class menuVista {
                 case 1 -> {
                     System.out.println("""
                     ******************************
-                    Seleccione el tipo de persona:
-                    1. Empleado
-                    2. Colaborador
-                    3. Beneficiario
+                    * [1] Empleado               *
+                    * [2] Colaborador            *       
+                    * [3] Beneficiario           *
                     ******************************
                     """);
+                    System.out.print("➤ Selecciona el tipo de usuario: ");
 
                     tipo = sc.nextInt();
 
                     System.out.print("Documento: ");
                     String documento = sc.next();
+                    sc.nextLine();
 
                     System.out.print("Nombre: ");
                     String nombre = sc.next();
+                    sc.nextLine();
 
                     System.out.print("Apellido: ");
                     String apellido = sc.next();
-
-                    System.out.print("Direccion: ");
-                    String direccion = sc.next();
+                    sc.nextLine();
 
                     System.out.print("Edad: ");
                     int edad = sc.nextInt();
+                    sc.nextLine();
+
+                    System.out.print("Direccion: ");
+                    String direccion = sc.next();
+                    sc.nextLine();
 
                     switch (tipo) {
                         case 1 -> {
-                            System.out.print("Cargo: ");
-                            String cargo = sc.next();
-
                             System.out.print("Salario: ");
-                            double salario = sc.nextDouble();
+                            double salario = Double.parseDouble(sc.nextLine());
 
-                            System.out.print("Horario: ");
-                            String horario = sc.next();
-
+                            System.out.print("Cargo: ");
+                            String cargo = sc.nextLine();
+                           
+                            String horarioFinal = registro.validarHorario(sc);
+                            
                             registro.registrarPersona(
-                                new Empleado(documento, nombre, apellido, direccion, edad, cargo, salario, horario)
+                                    new Empleado(documento, nombre, apellido, edad, direccion, salario, cargo, horarioFinal)
                             );
+                            
+                            System.out.println("El empleado ha sido registrado correctamente!!");
                         }
 
                         case 2 -> {
@@ -90,19 +96,24 @@ public class menuVista {
                             String meta = sc.next();
 
                             registro.registrarPersona(
-                                new Colaborador(documento, nombre, apellido, direccion, edad, horas, meta)
+                                    new Colaborador(documento, nombre, apellido, direccion, edad, horas, meta)
                             );
+                            
+                            System.out.println("El colaborador ha sido registrado correctamente!!");
                         }
 
                         case 3 -> {
                             registro.registrarPersona(
-                                new Beneficiario(documento, nombre, apellido, direccion, edad, 5)
+                                    new Beneficiario(documento, nombre, apellido, direccion, edad, 5)
                             );
+                            
+                            System.out.println("El beneficiario ha sido registrado correctamente!!");
                         }
                     }
                 }
 
-                case 2 -> registro.verPersonas();
+                case 2 ->
+                    registro.verPersonas();
 
                 case 3 -> {
                     System.out.print("Documento del beneficiario: ");
@@ -125,7 +136,7 @@ public class menuVista {
                 case 6 -> {
                     System.out.print("Documento que se va a presentar: ");
                     String doc = sc.next();
-                    registro.presentarse(doc);
+                    registro.mostrarSaludo(doc);     
                 }
             }
 
@@ -134,4 +145,3 @@ public class menuVista {
         System.out.println("Programa finalizado.");
     }
 }
-
