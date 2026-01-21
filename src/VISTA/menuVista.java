@@ -112,6 +112,7 @@ public class menuVista {
                     }
                 }
 
+                
                 case 2 ->
                     registro.verPersonas();
 
